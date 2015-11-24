@@ -40,3 +40,9 @@ main {
 input {
     margin-bottom: 0.5em;
 }
+
+#label {
+    font-size: 18px;
+    font-style: italic;
+    margin-left: 0.5em;
+}

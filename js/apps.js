@@ -1,5 +1,6 @@
 $(function() {
     'use strict';
+    
     var canvasW = document.getElementById('weatherChart');
     var canvasC = document.getElementById('caloriesChart');
     var canvasT = document.getElementById('timeSpentChart');
@@ -8,8 +9,10 @@ $(function() {
     var ctxC = canvasC.getContext('2d');
     var ctxT = canvasT.getContext('2d');
     
-    Chart.defaults.global.responsive = true;
+    //makes all charts responsive to browser size
+    Chart.defaults.global.responsive = true; 
     
+    //data for calorie intake chart
     var caloriesData = [
         {
             value: 563,
@@ -37,6 +40,7 @@ $(function() {
         }
     ];
     
+    //data for time spent during day
     var timeSpentData = {
         labels: ["Eating", "Working", "Exercising", "Commuting", "Playing Games", "Sleeping"],
         datasets: [
@@ -63,6 +67,7 @@ $(function() {
         ]
     };
     
+    //data for local weekly weather forecast
     var weatherData = {
         labels: ["Sunday", "Monday", "Tueday", "Wednesday", "Thursday", "Friday", "Saturday"], 
         datasets: [
@@ -76,6 +81,7 @@ $(function() {
         ]
     }
     
+    //adds a new meal to the calorie intake chart
     $('#new-meal').submit(function(evt) {
         evt.preventDefault();
         var name = $(this).find('[name="name"]');
@@ -89,12 +95,20 @@ $(function() {
         })
     })
     
-    var pieChart = new Chart(ctxC).Pie(caloriesData);
+    //creates doughnut chart
+    var doughnutChart = new Chart(ctxC).Doughnut(caloriesData);
+    //creates legend for items in the chart
     document.getElementById('caloriesLegend').innerHTML = 
-        pieChart.generateLegend();
+        doughnutChart.generateLegend();
     
+    //creates bar graph
     var barGraph = new Chart(ctxW).Bar(weatherData);
+    var d = new Date();
+    var month = d.getUTCMonth() + 1; //months from 1-12
+    var day = d.getUTCDate();
+    $('#date').text(month + "/" + day);
     
+    //creates radar graph
     var radarGraph= new Chart(ctxT).Radar(timeSpentData);
     document.getElementById('timeSpentLegend').innerHTML = 
         radarGraph.generateLegend();

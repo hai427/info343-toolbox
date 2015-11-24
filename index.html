@@ -4,10 +4,13 @@
         <meta charset="UTF-8">
         <meta name="viewport"
               content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <!--bootstrap-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css" integrity="sha512-dTfge/zgoMYpP7QbHy4gWMEGsbsdZeCXz7irItjcC3sPUFtf0kuFbDz/ixG7ArTxmDjLXDmezHubeNikyKGVyQ==" crossorigin="anonymous">
         <link rel="stylesheet" href="css/main.css">
         <link rel="icon" href="img/dashboard.png" type="image/gif" sizes="16x16">
+        <!--jquery library-->
         <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!--chart library-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
         
         <script src="js/apps.js"></script>
@@ -23,26 +26,37 @@
             <div class="col-md-4">
                 <h3>Today's Calorie Intake</h3>
                 <canvas id="caloriesChart" width="600" height="400"></canvas>
-                <p id="caloriesLegend"></p>
-                <h3>Add a meal!</h3>
-                <form id="new-meal">
-                    <input type="text" name="name" placeholder="What is it?">
-                    </br>
-                    <input type="number" name="calories" placeholder="How many calories?"></input>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </form>
+                
+                <div class="col-md-6">
+                    <h3>Meals Today</h3>
+                    <p id="caloriesLegend"></p>
+                </div>
+                
+                <div class="col-md-4">
+                    <h3>Add a meal!</h3>
+                    <form id="new-meal">
+                        <input type="text" name="name" placeholder=
+                            "What did you have?">
+                        <input type="number" name="calories" placeholder= 
+                            "How many calories?"></input>
+                        <button type="submit" class=
+                            "btn btn-primary">Submit</button>
+                    </form>
+                </div>
+                
             </div>
+            
             <div class="col-md-4">
-                <h3>Forecast For the Week (Farenheit)</h3>
+                <h3>Forecast For the Week of <span id="date"></span> <span id="label">(Farenheit)</span></h3>
                 <canvas id="weatherChart" width="600" height="400"></canvas>
                 <p id=weatherLegend></p>
             </div>
+            
             <div class="col-md-4">
-                <h3>Time Spent (Hours)</h3>
+                <h3>Time Spent <span id="label">(Hours)</span></h3>
                 <canvas id="timeSpentChart" width="600" height="400"></canvas>
                 <p id=timeSpentLegend></p>
             </div>
         </main>
-        
     </body>
 </html>
