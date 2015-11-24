@@ -81,13 +81,17 @@ $(function() {
         ]
     }
     
+    var weatherOptions = {
+        scaleShowGridLines : false,
+        barValueSpacing : 10
+    }
+    
     //adds a new meal to the calorie intake chart
     $('#new-meal').submit(function(evt) {
         evt.preventDefault();
-        var name = $(this).find('[name="name"]');
-        console.log(name);
-        var calories = $(this).find('[name="calories"]');
-        pieChart.addData({
+        var name = $(this).find('[name="name"]').val();
+        var calories = $(this).find('[name="calories"]').val();
+        doughnutChart.addData({
             value: calories,
             label: name,
             color: '#76FFA2',
@@ -102,7 +106,7 @@ $(function() {
         doughnutChart.generateLegend();
     
     //creates bar graph
-    var barGraph = new Chart(ctxW).Bar(weatherData);
+    var barGraph = new Chart(ctxW).Bar(weatherData, weatherOptions);
     var d = new Date();
     var month = d.getUTCMonth() + 1; //months from 1-12
     var day = d.getUTCDate();
